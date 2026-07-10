@@ -27,7 +27,7 @@ class DataCleaner:
         df["Value"] = pd.to_numeric(
             df["Value"],
             errors="coerce"
-        )
+        ).astype(float)#yeh error aarha tha phla data type la
 
         # date sorting (low->high)
 
