@@ -4,7 +4,9 @@ class ForecastChart:
 
     @staticmethod
     def create_chart(history_df, forecast_df):
+
         fig = go.Figure()
+
         fig.add_trace(
             go.Scatter(
                 x=history_df["Date"],
@@ -20,6 +22,30 @@ class ForecastChart:
                 y=forecast_df["Forecast"],
                 mode="lines+markers",
                 name="Forecast"
+            )
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=forecast_df["Date"],
+                y=forecast_df["Upper Bound"],
+                mode="lines",
+                name="Upper Bound",
+                line=dict(
+                    dash="dash"
+                )
+            )
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=forecast_df["Date"],
+                y=forecast_df["Lower Bound"],
+                mode="lines",
+                name="Lower Bound",
+                line=dict(
+                    dash="dash"
+                )
             )
         )
 

@@ -5,3 +5,6 @@ scikit-learn
 matplotlib
 plotly
 openpyxl
+timesfm
+torch
+einshape

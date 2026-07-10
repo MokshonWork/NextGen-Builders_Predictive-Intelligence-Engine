@@ -34,6 +34,10 @@ class ForecastEngine:
 
         future_values = []
 
+        lower_bound = []
+
+        upper_bound = []
+
         for i in range(horizon):
 
             next_value = (
@@ -45,16 +49,38 @@ class ForecastEngine:
                 trend * (i + 1)
             )
 
+            margin = next_value * 0.10
+
             future_values.append(
 
                 round(next_value, 2)
+            )
+
+            lower_bound.append(
+
+                round(
+                    next_value - margin,
+                    2
+                )
+            )
+
+            upper_bound.append(
+
+                round(
+                    next_value + margin,
+                    2
+                )
             )
 
         forecast_df = pd.DataFrame({
 
             "Date": future_dates,
 
-            "Forecast": future_values
+            "Forecast": future_values,
+
+            "Lower Bound": lower_bound,
+
+            "Upper Bound": upper_bound
         })
 
         return forecast_df
