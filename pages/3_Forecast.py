@@ -1,41 +1,82 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+
 from visulaization.forecast_chart import ForecastChart
 from core.forecast_engine import ForecastEngine
 from core.insight_engine import InsightEngine
 from core.simulator import ScenarioSimulator
 
-st.title(" Forecast")
+st.title("📈 Forecast")
+
+# -------------------------
+# Dataset check
+# -------------------------
 
 if "clean_df" not in st.session_state:
+
     st.error(
         "No dataset found. Please upload a CSV first."
     )
+
     st.stop()
 
 df = st.session_state["clean_df"]
 
-st.success("Dataset is uploaded ")
+if len(df) < 20:
 
-st.subheader("Cleaned Dataset")
+    st.error(
+        "Dataset must contain at least 20 rows."
+    )
+
+    st.stop()
+
+st.success(
+    "Dataset uploaded successfully."
+)
+
+# -------------------------
+# Preview
+# -------------------------
+
+st.subheader(
+    "📋 Cleaned Dataset"
+)
 
 st.dataframe(
+
     df.tail(10),
+
     use_container_width=True
 )
 
+# -------------------------
+# Forecast controls
+# -------------------------
+
 forecast_horizon = st.slider(
+
     "Forecast Horizon (days)",
+
     min_value=7,
+
     max_value=365,
+
     value=30
 )
 
 st.write(
+
     f"You selected {forecast_horizon} days."
 )
 
-st.subheader("Scenario Simulator")
+# -------------------------
+# Scenario Simulator
+# -------------------------
+
+st.subheader(
+    "🧪 Scenario Simulator"
+)
 
 scenario_percentage = st.slider(
 
@@ -53,12 +94,23 @@ st.write(
     f"Scenario change: {scenario_percentage}%"
 )
 
-if st.button(" Generate Forecast"):
+# -------------------------
+# Generate forecast
+# -------------------------
 
-    forecast_df = ForecastEngine.generate_forecast(
-        df,
-        forecast_horizon
-    )
+if st.button("🚀 Generate Forecast"):
+
+    with st.spinner(
+
+        "Generating forecast using Google TimesFM..."
+    ):
+
+        forecast_df = ForecastEngine.generate_forecast(
+
+            df,
+
+            forecast_horizon
+        )
 
     simulated_df = ScenarioSimulator.simulate(
 
@@ -67,7 +119,13 @@ if st.button(" Generate Forecast"):
         scenario_percentage
     )
 
-    st.subheader(" Forecast Output")
+    # -------------------------
+    # Table
+    # -------------------------
+
+    st.subheader(
+        "📊 Forecast Output"
+    )
 
     st.dataframe(
 
@@ -75,6 +133,10 @@ if st.button(" Generate Forecast"):
 
         use_container_width=True
     )
+
+    # -------------------------
+    # Forecast chart
+    # -------------------------
 
     fig = ForecastChart.create_chart(
 
@@ -90,12 +152,94 @@ if st.button(" Generate Forecast"):
         use_container_width=True
     )
 
-    st.subheader(" Forecast Summary")
+    # -------------------------
+    # Heatmap
+    # -------------------------
+
+    numeric_df = df.select_dtypes(
+
+        include=["number"]
+    )
+
+    if len(numeric_df.columns) > 1:
+
+        st.subheader(
+            "🔥 Feature Correlation Heatmap"
+        )
+
+        corr = numeric_df.corr()
+
+        heatmap = px.imshow(
+
+            corr,
+
+            text_auto=True,
+
+            aspect="auto"
+        )
+
+        st.plotly_chart(
+
+            heatmap,
+
+            use_container_width=True
+        )
+
+    # -------------------------
+    # Histogram
+    # -------------------------
+
+    st.subheader(
+        "📦 Data Distribution"
+    )
+
+    histogram = px.histogram(
+
+        df,
+
+        x="Value",
+
+        nbins=20
+    )
+
+    st.plotly_chart(
+
+        histogram,
+
+        use_container_width=True
+    )
+
+    # -------------------------
+    # Download button
+    # -------------------------
+
+    st.download_button(
+
+        label="⬇️ Download Forecast CSV",
+
+        data=simulated_df.to_csv(
+            index=False
+        ),
+
+        file_name="forecast.csv",
+
+        mime="text/csv"
+    )
+
+    # -------------------------
+    # Summary metrics
+    # -------------------------
+
+    st.subheader(
+        "📌 Forecast Summary"
+    )
 
     col1, col2, col3 = st.columns(3)
 
     col1.metric(
+
         "Current Value",
+
         round(
             df["Value"].iloc[-1],
             2
@@ -120,6 +264,7 @@ if st.button(" Generate Forecast"):
             -
 
             df["Value"].iloc[-1]
+
         )
 
         /
@@ -135,6 +280,10 @@ if st.button(" Generate Forecast"):
         f"{growth:.2f}%"
     )
 
+    # -------------------------
+    # AI insights
+    # -------------------------
+
     insights = InsightEngine.generate_insights(
 
         df,
@@ -142,7 +291,9 @@ if st.button(" Generate Forecast"):
         simulated_df
     )
 
-    st.subheader("AI Insights")
+    st.subheader(
+        "🤖 AI Insights"
+    )
 
     st.info(
 
@@ -154,6 +305,7 @@ if st.button(" Generate Forecast"):
         Risk Level: {insights["risk"]}
 
         Recommendation:
+
         {insights["recommendation"]}
         """
     )

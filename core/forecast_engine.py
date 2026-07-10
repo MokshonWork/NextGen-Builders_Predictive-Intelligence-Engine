@@ -28,14 +28,13 @@ class ForecastEngine:
             np.float32
         )
 
-        forecast, _ = ForecastEngine.model.forecast(
-
+        forecast, quantiles = ForecastEngine.model.forecast(
             horizon=horizon,
-
-            inputs=[
-                values
-            ]
+            inputs=[values]
         )
+
+        print(forecast.shape)
+        print(quantiles.shape)
 
         future_dates = pd.date_range(
 
