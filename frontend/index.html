@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureSight AI - Predictive Intelligence Engine</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-mark">
+                        <div class="logo-core"></div>
+                    </div>
+                    <span class="logo-text">FutureSight<span class="logo-accent">AI</span></span>
+                </div>
+                <button class="collapse-btn" id="collapse-sidebar-btn">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-tab="dashboard">
+                            <i data-lucide="layout-dashboard"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="upload">
+                            <i data-lucide="upload-cloud"></i>
+                            <span class="nav-text">Upload Dataset</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="forecast">
+                            <i data-lucide="line-chart"></i>
+                            <span class="nav-text">Forecast</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="insights">
+                            <i data-lucide="brain-circuit"></i>
+                            <span class="nav-text">AI Insights</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="analytics">
+                            <i data-lucide="bar-chart-3"></i>
+                            <span class="nav-text">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="architecture">
+                            <i data-lucide="network"></i>
+                            <span class="nav-text">Architecture</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-tab="settings">
+                            <i data-lucide="settings"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="profile-avatar">FS</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Enterprise User</span>
+                        <span class="profile-role">Predictive Suite</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <header class="top-nav">
+                <div class="top-nav-left">
+                    <button class="expand-btn hidden" id="expand-sidebar-btn">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-root">FutureSight AI</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-current" id="current-page-title">Dashboard</span>
+                    </div>
+                </div>
+                
+                <div class="top-nav-right">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-text">TimesFM 2.5 Active</span>
+                    </div>
+                    
+                    <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
+                        <i data-lucide="sun" class="sun-icon"></i>
+                        <i data-lucide="moon" class="moon-icon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Sections -->
+            <div class="page-container">
+                
+                <!-- 1. DASHBOARD PAGE -->
+                <section class="page-section active" id="page-dashboard">
+                    <div class="hero-section">
+                        <span class="hero-badge">Next-Gen Time-Series Engine</span>
+                        <h1 class="hero-title animate-text">FutureSight <span class="accent-text">AI</span></h1>
+                        <h2 class="hero-subtitle">Predictive Intelligence Engine</h2>
+                        <p class="hero-description">Transform historical data into intelligent forecasts using Google's TimesFM foundation model. Clean, validate, predict, and simulate business scenarios instantly.</p>
+                        
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="switchTab('upload')">
+                                <i data-lucide="upload-cloud"></i> Upload Data
+                            </button>
+                            <button class="btn btn-secondary" onclick="switchTab('forecast')">
+                                <i data-lucide="line-chart"></i> Generate Forecast
+                            </button>
+                            <button class="btn btn-outline" onclick="switchTab('insights')">
+                                <i data-lucide="brain-circuit"></i> Explore Insights
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Cards Grid -->
+                    <div class="metrics-grid">
+                        <div class="kpi-card glassmorphism">
+                            <div class="kpi-icon-container current-icon">
+                                <i data-lucide="database"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <span class="kpi-label">Current Value</span>
+                                <div class="kpi-value" id="kpi-current-val">-</div>
+                                <span class="kpi-trend" id="kpi-current-sub">Last historical data point</span>
+                            </div>
+                            <div class="kpi-glow"></div>
+                        </div>
+
+                        <div class="kpi-card glassmorphism">
+                            <div class="kpi-icon-container predicted-icon">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <span class="kpi-label">Predicted Value</span>
+                                <div class="kpi-value" id="kpi-predicted-val">-</div>
+                                <span class="kpi-trend" id="kpi-predicted-sub">Target forecast prediction</span>
+                            </div>
+                            <div class="kpi-glow"></div>
+                        </div>
+
+                        <div class="kpi-card glassmorphism">
+                            <div class="kpi-icon-container growth-icon">
+                                <i data-lucide="percent"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <span class="kpi-label">Growth Rate</span>
+                                <div class="kpi-value" id="kpi-growth-val">-</div>
+                                <span class="kpi-trend" id="kpi-growth-sub">Computed trend shift</span>
+                            </div>
+                            <div class="kpi-glow"></div>
+                        </div>
+
+                        <div class="kpi-card glassmorphism">
+                            <div class="kpi-icon-container risk-icon">
+                                <i data-lucide="shield-alert"></i>
+                            </div>
+                            <div class="kpi-content">
+                                <span class="kpi-label">Risk Assessment</span>
+                                <div class="kpi-value" id="kpi-risk-val">-</div>
+                                <span class="kpi-trend" id="kpi-risk-sub">Forecasting variance risk</span>
+                            </div>
+                            <div class="kpi-glow"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. UPLOAD DATASET PAGE -->
+                <section class="page-section" id="page-upload">
+                    <div class="page-header">
+                        <h2 class="section-title">Upload Dataset</h2>
+                        <p class="section-description">Upload your time-series CSV file for cleaning and structural validation.</p>
+                    </div>
+
+                    <div class="upload-layout">
+                        <!-- Drop Area and Progress -->
+                        <div class="upload-dropzone-container">
+                            <div class="upload-card glassmorphism" id="drop-area">
+                                <input type="file" id="file-input" accept=".csv" class="file-input">
+                                <div class="upload-icon-pulse">
+                                    <i data-lucide="upload" id="upload-icon-ui"></i>
+                                </div>
+                                <h3>Drag & Drop your CSV file here</h3>
+                                <p class="upload-hint">or click to browse local files (Required columns: 'Date', 'Value')</p>
+                            </div>
+
+                            <div class="progress-container hidden" id="upload-progress-wrapper">
+                                <div class="progress-meta">
+                                    <span class="progress-title">Validating & Cleaning Dataset...</span>
+                                    <span class="progress-percent" id="upload-progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="upload-progress-bar-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CSV Validation & Cleaning Panel -->
+                        <div class="validation-panel glassmorphism hidden" id="validation-report-panel">
+                            <div class="panel-header">
+                                <h3>CSV Validation Report</h3>
+                                <span class="badge" id="validation-status-badge">Pending</span>
+                            </div>
+                            
+                            <div class="validation-scroll">
+                                <div id="validation-messages-container"></div>
+                                
+                                <div class="cleaning-stats-wrapper hidden" id="cleaning-stats-wrapper">
+                                    <h4>Automatic Data Cleaning Applied</h4>
+                                    <div class="cleaning-grid">
+                                        <div class="clean-stat-card">
+                                            <span class="clean-stat-num" id="clean-stat-dup">0</span>
+                                            <span class="clean-stat-label">Duplicates Removed</span>
+                                        </div>
+                                        <div class="clean-stat-card">
+                                            <span class="clean-stat-num" id="clean-stat-null">0</span>
+                                            <span class="clean-stat-label">Missing Filled</span>
+                                        </div>
+                                        <div class="clean-stat-card">
+                                            <span class="clean-stat-num" id="clean-stat-outlier">0</span>
+                                            <span class="clean-stat-label">Outliers Capped</span>
+                                        </div>
+                                        <div class="clean-stat-card">
+                                            <span class="clean-stat-num" id="clean-stat-total">0</span>
+                                            <span class="clean-stat-label">Total Rows Cleaned</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="validation-actions">
+                                <button class="btn btn-secondary" id="reset-upload-btn">
+                                    <i data-lucide="rotate-ccw"></i> Reset Upload
+                                </button>
+                                <button class="btn btn-primary hidden" id="proceed-forecast-btn" onclick="switchTab('forecast')">
+                                    Proceed to Forecast <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dataset Preview Table -->
+                    <div class="preview-panel glassmorphism hidden" id="dataset-preview-panel">
+                        <div class="panel-header">
+                            <h3>Cleaned Dataset Preview (First 10 Rows)</h3>
+                            <span class="badge badge-info" id="preview-metadata-badge">Unknown Frequency</span>
+                        </div>
+                        <div class="table-container">
+                            <table class="preview-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="preview-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. FORECAST PAGE -->
+                <section class="page-section" id="page-forecast">
+                    <div class="page-header">
+                        <h2 class="section-title">Forecast Generator</h2>
+                        <p class="section-description">Run Google's TimesFM neural forecaster and run business scenario simulations.</p>
+                    </div>
+
+                    <div class="forecast-layout">
+                        <!-- Controls Panel -->
+                        <div class="forecast-controls-card glassmorphism">
+                            <h3>Forecasting Controls</h3>
+                            
+                            <div class="control-group">
+                                <label for="dataset-selector" class="control-label">
+                                    <span>Dataset Source</span>
+                                    <i data-lucide="info" class="tooltip-trigger" title="Select a realistic pre-loaded dataset or use your custom uploaded file."></i>
+                                </label>
+                                <select id="dataset-selector" class="control-select">
+                                    <option value="sales">💼 Sales Performance</option>
+                                    <option value="stock">📈 Stock Market Trend</option>
+                                    <option value="electricity">⚡ Electricity Demand</option>
+                                    <option value="traffic">🌐 Website Traffic</option>
+                                    <option value="custom" disabled id="dataset-custom-option">🗂️ Custom Uploaded Dataset</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="slider-header">
+                                    <label class="control-label">Forecast Horizon (Days)</label>
+                                    <span class="slider-value-display" id="horizon-val-display">30 days</span>
+                                </div>
+                                <input type="range" id="forecast-horizon-slider" min="7" max="180" value="30" class="control-slider">
+                                <div class="slider-markers">
+                                    <span>7d</span>
+                                    <span>90d</span>
+                                    <span>180d</span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="slider-header">
+                                    <label class="control-label">Scenario Simulator (Demand Shift)</label>
+                                    <span class="slider-value-display highlight" id="scenario-val-display">+0%</span>
+                                </div>
+                                <input type="range" id="scenario-slider" min="-30" max="50" value="0" class="control-slider">
+                                <div class="slider-markers">
+                                    <span>-30%</span>
+                                    <span>0%</span>
+                                    <span>+50%</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" id="generate-forecast-btn">
+                                Generate Forecast
+                            </button>
+                        </div>
+
+                        <!-- Chart Panel -->
+                        <div class="forecast-chart-card glassmorphism">
+                            <div class="panel-header">
+                                <h3 id="forecast-chart-title">Forecast Output</h3>
+                                <div class="chart-legend" id="chart-legend-wrapper"></div>
+                            </div>
+                            
+                            <!-- Skeleton Loader -->
+                            <div class="chart-skeleton" id="chart-skeleton-view">
+                                <div class="pulse-line"></div>
+                                <div class="pulse-grid"></div>
+                                <span class="skeleton-text">Configure options and click "Generate Forecast" to render the interactive chart.</span>
+                            </div>
+
+                            <!-- Plotly Chart Div -->
+                            <div id="plotly-forecast-chart" class="chart-container-div hidden"></div>
+                            
+                            <div class="forecast-footer-actions hidden" id="forecast-footer-actions">
+                                <div class="export-meta">
+                                    <span class="meta-label">Forecast Output Quality score</span>
+                                    <span class="meta-value score-high">98.4 (High Confidence)</span>
+                                </div>
+                                <button class="btn btn-outline" id="download-forecast-csv-btn">
+                                    <i data-lucide="download"></i> Download Forecast CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. AI INSIGHTS PAGE -->
+                <section class="page-section" id="page-insights">
+                    <div class="page-header">
+                        <h2 class="section-title">AI Insights</h2>
+                        <p class="section-description">Automated narrative analysis and strategic recommendations compiled by LLM intelligence.</p>
+                    </div>
+
+                    <div class="insights-layout">
+                        <!-- AI Metrics Grid -->
+                        <div class="insights-summary-grid">
+                            <div class="insight-pill glassmorphism">
+                                <span class="pill-title">Trend Shift</span>
+                                <span class="pill-value" id="insight-trend-text">-</span>
+                                <div class="pill-indicator" id="insight-trend-indicator"></div>
+                            </div>
+                            <div class="insight-pill glassmorphism">
+                                <span class="pill-title">Expected Growth</span>
+                                <span class="pill-value" id="insight-growth-text">-</span>
+                                <div class="pill-indicator positive" id="insight-growth-indicator"></div>
+                            </div>
+                            <div class="insight-pill glassmorphism">
+                                <span class="pill-title">Risk Level</span>
+                                <span class="pill-value" id="insight-risk-text">-</span>
+                                <div class="pill-indicator risk-low" id="insight-risk-indicator"></div>
+                            </div>
+                        </div>
+
+                        <!-- ChatGPT Style Card: Why This Forecast? -->
+                        <div class="insight-detailed-card glassmorphism">
+                            <div class="insight-card-header">
+                                <div class="bot-icon">
+                                    <i data-lucide="brain"></i>
+                                </div>
+                                <div>
+                                    <h3>Model Rationalization: "Why This Forecast?"</h3>
+                                    <p class="insight-card-sub">Explaining Google TimesFM structural predictions</p>
+                                </div>
+                            </div>
+
+                            <div class="insight-sections-grid">
+                                <div class="insight-subcard">
+                                    <div class="subcard-header">
+                                        <i data-lucide="calendar"></i>
+                                        <h4>Historical Patterns</h4>
+                                    </div>
+                                    <p id="insight-historical-desc">The model analyzes the input series for baseline trends, cyclic recurrence, and structural breaks. It registers underlying patterns to inform standard seasonal weights.</p>
+                                </div>
+
+                                <div class="insight-subcard">
+                                    <div class="subcard-header">
+                                        <i data-lucide="arrow-up-right"></i>
+                                        <h4>Trend Direction</h4>
+                                    </div>
+                                    <p id="insight-trend-desc">TimesFM predicts the slope and velocity of the series over the forecast horizon. Extrapolations are calculated with zero-shot weights based on millions of pre-trained datasets.</p>
+                                </div>
+
+                                <div class="insight-subcard">
+                                    <div class="subcard-header">
+                                        <i data-lucide="compass"></i>
+                                        <h4>Seasonal Behavior</h4>
+                                    </div>
+                                    <p id="insight-seasonal-desc">Identifies cyclical behaviors in the dataset. Autoregressive weights account for weekly offsets and month-end fluctuations based on historical frequency matching.</p>
+                                </div>
+
+                                <div class="insight-subcard">
+                                    <div class="subcard-header">
+                                        <i data-lucide="sliders"></i>
+                                        <h4>Scenario Impact</h4>
+                                    </div>
+                                    <p id="insight-scenario-desc">Simulates simulated overrides to the baseline forecasts. The scenario simulator scales forecasted levels according to demand overrides while maintaining underlying variance bounds.</p>
+                                </div>
+                            </div>
+
+                            <div class="insight-recommendation-box">
+                                <div class="rec-icon">
+                                    <i data-lucide="award"></i>
+                                </div>
+                                <div class="rec-content">
+                                    <h4>Strategic Action Recommendation</h4>
+                                    <p id="insight-recommendation-text">Provide data by running the TimesFM Forecast on the Forecast page to load AI strategic insights.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. ANALYTICS PAGE -->
+                <section class="page-section" id="page-analytics">
+                    <div class="page-header">
+                        <h2 class="section-title">Deep Analytics</h2>
+                        <p class="section-description">Explore statistics, data distributions, correlation networks, and trend shapes.</p>
+                    </div>
+
+                    <!-- Analytics Grid -->
+                    <div class="analytics-grid">
+                        <div class="analytics-card glassmorphism">
+                            <h3>Correlation Matrix</h3>
+                            <p class="analytics-sub">Temporal auto-correlation offsets</p>
+                            <div id="plotly-heatmap-chart" class="analytics-chart-container">
+                                <div class="chart-skeleton-mini">Running model required</div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card glassmorphism">
+                            <h3>Value Distribution</h3>
+                            <p class="analytics-sub">Data point frequencies (Histogram)</p>
+                            <div id="plotly-histogram-chart" class="analytics-chart-container">
+                                <div class="chart-skeleton-mini">Running model required</div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card glassmorphism">
+                            <h3>Trend Analysis</h3>
+                            <p class="analytics-sub">Historical moving average decomposition</p>
+                            <div id="plotly-trend-chart" class="analytics-chart-container">
+                                <div class="chart-skeleton-mini">Running model required</div>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card glassmorphism">
+                            <h3>Forecast Scenarios</h3>
+                            <p class="analytics-sub">Base vs. Simulated forecast paths</p>
+                            <div id="plotly-comparison-chart" class="analytics-chart-container">
+                                <div class="chart-skeleton-mini">Running model required</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. ARCHITECTURE PAGE -->
+                <section class="page-section" id="page-architecture">
+                    <div class="page-header">
+                        <h2 class="section-title">Platform Architecture</h2>
+                        <p class="section-description">Interactive workflow execution pipeline built with LangGraph, TimesFM, and Streamlit.</p>
+                    </div>
+
+                    <div class="architecture-layout">
+                        <!-- LangGraph Execution Flow -->
+                        <div class="architecture-flow-card glassmorphism">
+                            <h3>LangGraph Execution Pipeline</h3>
+                            <p class="flow-subtitle">Hover over components to view technical stacks. Run forecasts to trigger active workflow path highlights.</p>
+                            
+                            <div class="graph-svg-container" id="graph-svg-container">
+                                <!-- Interactive SVG Workflow Diagram -->
+                                <svg id="workflow-svg" viewBox="0 0 900 450" width="100%" height="100%">
+                                    <defs>
+                                        <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#D90429" stop-opacity="0.2" />
+                                            <stop offset="50%" stop-color="#FF2D55" stop-opacity="0.8" />
+                                            <stop offset="100%" stop-color="#D90429" stop-opacity="0.2" />
+                                        </linearGradient>
+                                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="8" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                    </defs>
+                                    
+                                    <!-- Connection Paths -->
+                                    <path id="path1" d="M 90 225 L 180 225" class="flow-line" />
+                                    <path id="path2" d="M 280 225 L 370 225" class="flow-line" />
+                                    <path id="path3" d="M 470 225 Q 520 120 570 120" class="flow-line" />
+                                    <path id="path4" d="M 470 225 Q 520 330 570 330" class="flow-line" />
+                                    <path id="path5" d="M 670 120 Q 720 120 770 225" class="flow-line" />
+                                    <path id="path6" d="M 670 330 Q 720 330 770 225" class="flow-line" />
+                                    <path id="path7" d="M 810 225 L 870 225" class="flow-line" />
+                                    
+                                    <!-- Animated Glowing Dash Paths (Glow during execution) -->
+                                    <path id="path1-glow" d="M 90 225 L 180 225" class="flow-line-glow hidden" />
+                                    <path id="path2-glow" d="M 280 225 L 370 225" class="flow-line-glow hidden" />
+                                    <path id="path3-glow" d="M 470 225 Q 520 120 570 120" class="flow-line-glow hidden" />
+                                    <path id="path4-glow" d="M 470 225 Q 520 330 570 330" class="flow-line-glow hidden" />
+                                    <path id="path5-glow" d="M 670 120 Q 720 120 770 225" class="flow-line-glow hidden" />
+                                    <path id="path6-glow" d="M 670 330 Q 720 330 770 225" class="flow-line-glow hidden" />
+                                    <path id="path7-glow" d="M 810 225 L 870 225" class="flow-line-glow hidden" />
+
+                                    <!-- Workflow Nodes -->
+                                    <g id="node-upload" class="flow-node" data-node="upload" transform="translate(40,195)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">CSV Upload</text>
+                                    </g>
+                                    
+                                    <g id="node-validator" class="flow-node" data-node="validator" transform="translate(180,195)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">Validation</text>
+                                    </g>
+                                    
+                                    <g id="node-cleaner" class="flow-node" data-node="cleaner" transform="translate(370,195)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">Cleaner</text>
+                                    </g>
+                                    
+                                    <!-- TimesFM branch (top) -->
+                                    <g id="node-timesfm" class="flow-node" data-node="timesfm" transform="translate(570,90)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">TimesFM</text>
+                                    </g>
+                                    
+                                    <!-- Scenario branch (bottom) -->
+                                    <g id="node-simulator" class="flow-node" data-node="simulator" transform="translate(570,300)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">Simulator</text>
+                                    </g>
+                                    
+                                    <g id="node-insights" class="flow-node" data-node="insights" transform="translate(720,195)">
+                                        <rect width="100" height="60" rx="8" class="node-rect" />
+                                        <text x="50" y="35" class="node-text">AI Insights</text>
+                                    </g>
+                                    
+                                    <g id="node-dashboard" class="flow-node" data-node="dashboard" transform="translate(850,195)">
+                                        <circle cx="20" cy="30" r="20" class="node-circle" />
+                                        <text x="20" y="35" class="node-text circle-text">UI</text>
+                                    </g>
+                                </svg>
+                                
+                                <!-- Floating Detail Tooltip -->
+                                <div class="node-tooltip hidden" id="architecture-node-tooltip">
+                                    <div class="tooltip-node-title">Validation Agent</div>
+                                    <div class="tooltip-meta-row">
+                                        <span class="tooltip-meta-lbl">Component:</span>
+                                        <span class="tooltip-meta-val" id="tooltip-comp">ValidationAgent</span>
+                                    </div>
+                                    <div class="tooltip-meta-row">
+                                        <span class="tooltip-meta-lbl">Technology:</span>
+                                        <span class="tooltip-meta-val" id="tooltip-tech">LangGraph</span>
+                                    </div>
+                                    <div class="tooltip-meta-row">
+                                        <span class="tooltip-meta-lbl">Role:</span>
+                                        <span class="tooltip-meta-val" id="tooltip-role">Parses CSV schema & verifies timestamps</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Stack Details -->
+                        <div class="arch-tech-stack glassmorphism">
+                            <h3>FutureSight AI System Architecture</h3>
+                            <div class="tech-stack-grid">
+                                <div class="tech-item">
+                                    <div class="tech-title">Frontend Framework</div>
+                                    <div class="tech-val">Streamlit</div>
+                                    <div class="tech-desc">Provides the robust Python web environment, running an iframe-based premium React-like SPA component for absolute style control.</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-title">AI Workflow Orchestrator</div>
+                                    <div class="tech-val">LangGraph</div>
+                                    <div class="tech-desc">Defines step-by-step stateful workflows (`Validation -> Cleaning -> Forecast -> Insights`) enabling granular, agentic tracking.</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-title">Forecasting Foundation</div>
+                                    <div class="tech-val">Google TimesFM (200M)</div>
+                                    <div class="tech-desc">State-of-the-art transformer architecture trained on 100B+ time-series points, delivering highly accurate zero-shot daily predictions.</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-title">Visualizations</div>
+                                    <div class="tech-val">Plotly.js</div>
+                                    <div class="tech-desc">Interactive, GPU-accelerated client-side plotting supporting dynamic dark/light configuration, confidence bounds, and zoom grids.</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-title">Data Processing</div>
+                                    <div class="tech-val">Pandas + NumPy</div>
+                                    <div class="tech-desc">Fast, native matrix computation pipelines for outlier capping, linear interpolation, and scenario overrides.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. SETTINGS PAGE -->
+                <section class="page-section" id="page-settings">
+                    <div class="page-header">
+                        <h2 class="section-title">Settings</h2>
+                        <p class="section-description">Configure visual configurations and platform constraints.</p>
+                    </div>
+
+                    <div class="settings-layout glassmorphism">
+                        <div class="settings-section">
+                            <h3>Theme Settings</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <div class="setting-name">Dark Mode Style</div>
+                                    <div class="setting-desc">Set dark theme background assets by default. Toggle themes instantly.</div>
+                                </div>
+                                <div class="setting-action">
+                                    <div class="theme-option-selectors">
+                                        <button class="theme-opt-btn active" id="setting-theme-dark" onclick="setThemeMode('dark')">Dark Mode</button>
+                                        <button class="theme-opt-btn" id="setting-theme-light" onclick="setThemeMode('light')">Light Mode</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Forecast Settings</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <div class="setting-name">Confidence Interval Bounds</div>
+                                    <div class="setting-desc">Configure shaded variance boundary margins for Google TimesFM.</div>
+                                </div>
+                                <div class="setting-action">
+                                    <select class="control-select setting-dropdown" id="setting-confidence-width">
+                                        <option value="80">80% Interval Width</option>
+                                        <option value="90">90% Interval Width</option>
+                                        <option value="95" selected>95% Interval Width (Recommended)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <div class="setting-name">Outlier Deviation Capping Factor</div>
+                                    <div class="setting-desc">Standard standard deviation multipliers for cleaning data anomalies.</div>
+                                </div>
+                                <div class="setting-action">
+                                    <select class="control-select setting-dropdown" id="setting-outlier-std">
+                                        <option value="2">2 Standard Deviations (Aggressive)</option>
+                                        <option value="3" selected>3 Standard Deviations (Balanced)</option>
+                                        <option value="4">4 Standard Deviations (Lenient)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Developer Options</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <div class="setting-name">Fallback Simulation Mode</div>
+                                    <div class="setting-desc">Use simulated ARIMA curves if TimesFM model loading fails.</div>
+                                </div>
+                                <div class="setting-action">
+                                    <label class="switch-toggle">
+                                        <input type="checkbox" id="setting-fallback-checkbox" checked>
+                                        <span class="switch-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- JS -->
+    <script src="app.js"></script>
+</body>
+</html>

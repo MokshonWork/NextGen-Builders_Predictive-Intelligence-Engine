@@ -8,3 +8,10 @@ openpyxl
 timesfm
 torch
 einshape
+flask
+transformers
+huggingface-hub
+safetensors
+
+langgraph
+langchain
