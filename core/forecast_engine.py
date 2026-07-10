@@ -1,86 +1,59 @@
 import pandas as pd
+import numpy as np
 
+from timesfm.timesfm_2p5.timesfm_2p5_torch import (
+    TimesFM_2p5_200M_torch
+)
+from timesfm.configs import ForecastConfig
 
 class ForecastEngine:
 
+    model = TimesFM_2p5_200M_torch.from_pretrained(
+        "google/timesfm-2.5-200m-pytorch"
+    )
+    model.compile(
+        ForecastConfig(
+            max_context=512,
+            max_horizon=365
+        )
+    )
+
     @staticmethod
     def generate_forecast(
-        df: pd.DataFrame,
-        horizon: int
+        df,
+        horizon
     ):
 
-        last_date = df["Date"].max()
+        values = df["Value"].values.astype(
+            np.float32
+        )
 
-        last_value = df["Value"].iloc[-1]
+        forecast, _ = ForecastEngine.model.forecast(
+
+            horizon=horizon,
+
+            inputs=[
+                values
+            ]
+        )
 
         future_dates = pd.date_range(
 
-            start=last_date + pd.Timedelta(days=1),
+            start=df["Date"].iloc[-1],
 
-            periods=horizon,
+            periods=horizon + 1,
 
             freq="D"
+
+        )[1:]
+
+        forecast_df = pd.DataFrame(
+
+            {
+                "Date": future_dates,
+                "Forecast": forecast[0]
+            }
+
         )
-
-        trend = (
-
-            df["Value"].iloc[-1]
-
-            -
-
-            df["Value"].iloc[0]
-
-        ) / len(df)
-
-        future_values = []
-
-        lower_bound = []
-
-        upper_bound = []
-
-        for i in range(horizon):
-
-            next_value = (
-
-                last_value
-
-                +
-
-                trend * (i + 1)
-            )
-
-            margin = next_value * 0.10
-
-            future_values.append(
-
-                round(next_value, 2)
-            )
-
-            lower_bound.append(
-
-                round(
-                    next_value - margin,
-                    2
-                )
-            )
-
-            upper_bound.append(
-
-                round(
-                    next_value + margin,
-                    2
-                )
-            )
-
-        forecast_df = pd.DataFrame({
-
-            "Date": future_dates,
-
-            "Forecast": future_values,
-
-            "Lower Bound": lower_bound,
-
-            "Upper Bound": upper_bound
-        })
 
         return forecast_df

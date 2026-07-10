@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 
+
 class ForecastChart:
 
     @staticmethod
@@ -21,31 +22,7 @@ class ForecastChart:
                 x=forecast_df["Date"],
                 y=forecast_df["Forecast"],
                 mode="lines+markers",
-                name="Forecast"
-            )
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=forecast_df["Date"],
-                y=forecast_df["Upper Bound"],
-                mode="lines",
-                name="Upper Bound",
-                line=dict(
-                    dash="dash"
-                )
-            )
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=forecast_df["Date"],
-                y=forecast_df["Lower Bound"],
-                mode="lines",
-                name="Lower Bound",
-                line=dict(
-                    dash="dash"
-                )
+                name="TimesFM Forecast"
             )
         )
 
