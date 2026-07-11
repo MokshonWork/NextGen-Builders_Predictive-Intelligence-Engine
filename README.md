@@ -177,12 +177,16 @@ FutureSight-AI/
 
 # Prototype / Demo Link
 
-[Live Demo](https://nextgen-builderspredictive-intelligence-engine-production.up.railway.app/)
+[Live Link](https://nextgen-builderspredictive-intelligence-engine-production.up.railway.app/)
 
 ---
 
 # Presentation (PPT) Link
 [Link](https://drive.google.com/drive/folders/1k3OUAM-17lmP-WNwxJt2JXaKpzy2rCzs?usp=drive_link)
+
+---
+# Video Demo Link
+[Link](https://drive.google.com/drive/folders/1_8kJwNX1xN9y13rDybYtbRCF34FGA22K?usp=drive_link)
 
 ---
 
