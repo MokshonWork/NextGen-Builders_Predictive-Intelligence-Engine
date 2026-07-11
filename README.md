@@ -10,7 +10,7 @@
 
 ## Team Leader Email
 
-**goyalmox@gmail.com**
+**[goyalmox@gmail.com](mailto:goyalmox@gmail.com)**
 
 ## Team Size
 
@@ -34,7 +34,7 @@
 
 # Project Description
 
-FutureSight AI is an AI-powered predictive analytics platform that transforms historical time-series data into accurate forecasts and actionable insights. The platform leverages Google's **TimesFM foundation model** for forecasting and **Gemini AI** for generating intelligent recommendations and explanations.
+FutureSight AI is an AI-powered predictive analytics platform that transforms historical time-series data into accurate forecasts and actionable insights. The platform leverages Google's **TimesFM foundation model** for forecasting and advanced AI pipelines for generating intelligent recommendations and explanations.
 
 Users can upload datasets, clean and validate them, visualize historical trends, generate future predictions, and receive AI-powered insights through an interactive dashboard.
 
@@ -44,24 +44,24 @@ The system is designed to help businesses and individuals make informed, data-dr
 
 # Key Features
 
-- AI-powered forecasting using Google TimesFM.
-- Intelligent insights powered by Gemini AI.
-- Interactive dashboard built with Streamlit.
-- Dataset cleaning and validation.
-- Historical trend visualization and analytics.
-- Scenario simulation and prediction intervals.
-- CSV upload and real-time forecasting.
-- User-friendly and responsive interface.
+* AI-powered forecasting using Google TimesFM.
+* Interactive dashboard built with Streamlit.
+* Dataset cleaning and validation.
+* Historical trend visualization and analytics.
+* Scenario simulation and prediction intervals.
+* CSV upload and real-time forecasting.
+* AI-generated insights and recommendations.
+* User-friendly and responsive interface.
 
 ---
 
 # Team Members
 
-| Name | Role |
-| :--- | :--- |
-| **Moksh Goyal** | Team Leader • ML Developer • Frontend Developer • Backend Developer |
-| **Ifra Shaikh** | Team Member |
-| **Khushboo Yadav** | Presentation Designer |
+| Name               | Role                                                                |
+| :----------------- | :------------------------------------------------------------------ |
+| **Moksh Goyal**    | Team Leader • ML Developer • Frontend Developer • Backend Developer |
+| **Ifra Shaikh**    | Team Member                                                         |
+| **Khushboo Yadav** | Presentation Designer                                               |
 
 ---
 
@@ -69,27 +69,27 @@ The system is designed to help businesses and individuals make informed, data-dr
 
 ## Moksh Goyal
 
-- Led the project development and team coordination.
-- Designed and implemented the complete system architecture.
-- Integrated Google TimesFM and Gemini APIs.
-- Developed the frontend and backend components.
-- Built the forecasting, validation, and analytics pipeline.
-- Managed deployment, GitHub repository, and overall project integration.
-- Developed visualizations and dashboard features.
+* Led the project development and team coordination.
+* Designed and implemented the complete system architecture.
+* Integrated Google TimesFM and AI workflows.
+* Developed the frontend and backend components.
+* Built the forecasting, validation, and analytics pipeline.
+* Managed deployment, GitHub repository, and overall project integration.
+* Developed visualizations and dashboard features.
 
 ---
 
 ## Ifra Shaikh
 
-- Registered team member.
-- Due to unforeseen constraints, could not actively contribute during the development phase.
+* Registered team member.
+* Due to unforeseen constraints, could not actively contribute during the development phase.
 
 ---
 
 ## Khushboo Yadav
 
-- Designed and prepared the project presentation (PPT).
-- Assisted in presenting the project workflow and features.
+* Designed and prepared the project presentation (PPT).
+* Assisted in presenting the project workflow and features.
 
 ---
 
@@ -97,31 +97,40 @@ The system is designed to help businesses and individuals make informed, data-dr
 
 ## Frontend
 
-- Streamlit
-- HTML
-- CSS
-- JavaScript
+* Streamlit
+* HTML
+* CSS
+* JavaScript
 
 ## Backend
 
-- Python
-- Flask
+* Python
+* Flask
 
 ## AI & Machine Learning
 
-- Google TimesFM
-- Gemini API
-- Time-Series Forecasting
-- Predictive Analytics
+* Google TimesFM
+* LangChain
+* PyTorch
+* Time-Series Forecasting
+* Predictive Analytics
 
 ## Libraries & Tools
 
-- Pandas
-- NumPy
-- Plotly
-- Scikit-learn
-- Git & GitHub
-- Hugging Face
+* Pandas
+* NumPy
+* Plotly
+* Matplotlib
+* Scikit-learn
+* TimesFM
+* Torch
+* LangChain
+* Requests
+* Pydantic
+* Python-dotenv
+* Git & GitHub
+* Hugging Face
+* Railway
 
 ---
 
@@ -140,12 +149,12 @@ The system is designed to help businesses and individuals make informed, data-dr
 
 # Use Cases
 
-- Sales forecasting
-- Stock market prediction
-- Electricity demand forecasting
-- Website traffic analysis
-- Business intelligence
-- Demand planning
+* Sales forecasting
+* Stock market prediction
+* Electricity demand forecasting
+* Website traffic analysis
+* Business intelligence
+* Demand planning
 
 ---
 
@@ -169,23 +178,24 @@ FutureSight-AI/
 # Prototype / Demo Link
 
 [Live Demo](https://nextgen-builderspredictive-intelligence-engine-production.up.railway.app/)
+
 ---
 
 # Presentation (PPT) Link
-
-**Coming Soon**
+[Link](https://drive.google.com/drive/folders/1k3OUAM-17lmP-WNwxJt2JXaKpzy2rCzs?usp=drive_link)
 
 ---
 
 # Future Scope
 
-- Real-time forecasting.
-- Multi-user support.
-- Advanced forecasting models.
-- Cloud optimization.
-- Exportable reports and dashboards.
-- Enterprise analytics support.
+* Real-time forecasting.
+* Multi-user support.
+* Advanced forecasting models.
+* Cloud optimization.
+* Exportable reports and dashboards.
+* Enterprise analytics support.
 
 ---
 
 ## Built with ❤️ by Team NextGen-Builders
+
