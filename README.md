@@ -12,13 +12,9 @@
 
 **goyalmox@gmail.com**
 
-## Team Leader Phone Number
-
-**+91 8954433540**
-
 ## Team Size
 
-**4 Members**
+**3 Members**
 
 ---
 
@@ -30,24 +26,32 @@
 
 # Project Title
 
-**FutureSight AI**
+# FutureSight AI
+
+### AI-Powered Predictive Analytics & Forecasting Platform
 
 ---
 
 # Project Description
 
-FutureSight AI is an AI-powered predictive analytics platform that transforms historical time-series data into meaningful forecasts and actionable insights. The platform leverages Google's TimesFM foundation model for forecasting and Gemini for generating intelligent recommendations.
+FutureSight AI is an AI-powered predictive analytics platform that transforms historical time-series data into accurate forecasts and actionable insights. The platform leverages Google's **TimesFM foundation model** for forecasting and **Gemini AI** for generating intelligent recommendations and explanations.
 
-Users can upload datasets, clean and validate them, visualize historical trends, generate future predictions, and receive AI-powered insights through an interactive dashboard. The system is designed to help individuals and organizations make informed, data-driven decisions.
+Users can upload datasets, clean and validate them, visualize historical trends, generate future predictions, and receive AI-powered insights through an interactive dashboard.
 
-## Key Features
+The system is designed to help businesses and individuals make informed, data-driven decisions through advanced forecasting and analytics.
 
-- AI-powered time-series forecasting using Google TimesFM.
+---
+
+# Key Features
+
+- AI-powered forecasting using Google TimesFM.
+- Intelligent insights powered by Gemini AI.
 - Interactive dashboard built with Streamlit.
 - Dataset cleaning and validation.
-- Trend visualization and analytics.
-- AI-generated insights and recommendations.
-- User-friendly interface.
+- Historical trend visualization and analytics.
+- Scenario simulation and prediction intervals.
+- CSV upload and real-time forecasting.
+- User-friendly and responsive interface.
 
 ---
 
@@ -55,9 +59,9 @@ Users can upload datasets, clean and validate them, visualize historical trends,
 
 | Name | Role |
 | :--- | :--- |
-| Moksh Goyal | Team Leader & Frontend Developer & ML Developer |
-| Ifra Shaikh | Frontend Developer  & ML Developer |
-| Khushboo Yadav Yadav | Presentation Designer |
+| **Moksh Goyal** | Team Leader • ML Developer • Frontend Developer • Backend Developer |
+| **Ifra Shaikh** | Team Member |
+| **Khushboo Yadav** | Presentation Designer |
 
 ---
 
@@ -66,47 +70,122 @@ Users can upload datasets, clean and validate them, visualize historical trends,
 ## Moksh Goyal
 
 - Led the project development and team coordination.
-- Integrated Google TimesFM for forecasting.
-- Developed the data processing pipeline and prediction modules.
-- Managed the overall project architecture.
+- Designed and implemented the complete system architecture.
+- Integrated Google TimesFM and Gemini APIs.
+- Developed the frontend and backend components.
+- Built the forecasting, validation, and analytics pipeline.
+- Managed deployment, GitHub repository, and overall project integration.
+- Developed visualizations and dashboard features.
+
+---
 
 ## Ifra Shaikh
 
-- Assisted in frontend development.
-- Worked on UI design and dashboard components.
-- Helped with testing and documentation.
+- Registered team member.
+- Due to unforeseen constraints, could not actively contribute during the development phase.
 
-## Khushboo Yadav Yadav
-
-- Designed and prepared the project presentation (PPT).
-- Developed the Streamlit-based dashboard.
-- Worked on the user interface and user experience.
 ---
 
-# Technical Skills
+## Khushboo Yadav
+
+- Designed and prepared the project presentation (PPT).
+- Assisted in presenting the project workflow and features.
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- Streamlit
+- HTML
+- CSS
+- JavaScript
+
+## Backend
 
 - Python
-- Streamlit
+- Flask
+
+## AI & Machine Learning
+
 - Google TimesFM
 - Gemini API
+- Time-Series Forecasting
+- Predictive Analytics
+
+## Libraries & Tools
+
 - Pandas
 - NumPy
 - Plotly
-- Machine Learning
-- Time-Series Forecasting
+- Scikit-learn
 - Git & GitHub
 - Hugging Face
 
 ---
 
+# Workflow
+
+1. Upload dataset.
+2. Validate the CSV structure.
+3. Clean and preprocess the data.
+4. Generate forecasts using TimesFM.
+5. Simulate future scenarios.
+6. Visualize trends and predictions.
+7. Generate AI-powered insights.
+8. Support data-driven decision-making.
+
+---
+
+# Use Cases
+
+- Sales forecasting
+- Stock market prediction
+- Electricity demand forecasting
+- Website traffic analysis
+- Business intelligence
+- Demand planning
+
+---
+
+# Project Structure
+
+```text
+FutureSight-AI/
+│
+├── agents/
+├── core/
+├── frontend/
+├── pages/
+├── visualization/
+├── app.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
 # Prototype / Demo Link
 
-**[will be uploading link later]**
+[Live Demo](https://nextgen-builderspredictive-intelligence-engine-production.up.railway.app/)
+---
+
+# Presentation (PPT) Link
+
+**Coming Soon**
 
 ---
 
-# Presentation (PPT) Link (Google Drive)
+# Future Scope
 
-**[will be uploading link later]**
+- Real-time forecasting.
+- Multi-user support.
+- Advanced forecasting models.
+- Cloud optimization.
+- Exportable reports and dashboards.
+- Enterprise analytics support.
 
 ---
+
+## Built with ❤️ by Team NextGen-Builders
