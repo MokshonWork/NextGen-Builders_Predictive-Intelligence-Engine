@@ -300,17 +300,29 @@ def find_free_port():
     s.close()
     return port
 
+
 # Start flask thread once
 def start_flask_thread(port):
-    app.run(port=port, host='0.0.0.0', debug=False, threaded=True)
+    app.run(
+        port=port,
+        host='0.0.0.0',
+        debug=False,
+        threaded=True
+    )
+
 
 if not hasattr(sys, "_futuresight_api_port"):
     free_port = find_free_port()
     sys._futuresight_api_port = free_port
-    
-    # Start thread
-    api_thread = threading.Thread(target=start_flask_thread, args=(free_port,), daemon=True)
+
+    api_thread = threading.Thread(
+        target=start_flask_thread,
+        args=(free_port,),
+        daemon=True
+    )
+
     api_thread.start()
+
     print(f"Background API Server started on port {free_port}")
 
 # ----------------------------------------------------
