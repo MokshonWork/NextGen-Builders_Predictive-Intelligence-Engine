@@ -7,6 +7,8 @@ import sys
 import json
 import os
 from flask import Flask, request, jsonify
+import streamlit.components.v1 as components
+
 
 # Set page config first
 st.set_page_config(
@@ -300,7 +302,7 @@ def find_free_port():
 
 # Start flask thread once
 def start_flask_thread(port):
-    app.run(port=port, host='127.0.0.1', debug=False, threaded=True)
+    app.run(port=port, host='0.0.0.0', debug=False, threaded=True)
 
 if not hasattr(sys, "_futuresight_api_port"):
     free_port = find_free_port()
@@ -378,4 +380,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Render Fullscreen HTML Iframe
-st.components.v1.html(html_content, height=1080, scrolling=False)
+components.html(
+    html_content,
+    height=1080,
+    scrolling=False
+)
