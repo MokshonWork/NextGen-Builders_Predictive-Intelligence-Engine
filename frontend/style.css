@@ -33,6 +33,10 @@
     
     --metric-up: #10B981;
     --metric-down: #EF4444;
+
+    --hero-bg-start: rgba(17, 17, 19, 0.9);
+    --hero-bg-end: rgba(9, 9, 11, 0.95);
+    --hero-glow: rgba(217, 4, 41, 0.08);
 }
 
 /* Light Mode Variables */
@@ -59,6 +63,10 @@
     
     --metric-up: #059669;
     --metric-down: #DC2626;
+
+    --hero-bg-start: rgba(255, 255, 255, 0.9);
+    --hero-bg-end: rgba(244, 244, 245, 0.95);
+    --hero-glow: rgba(193, 18, 31, 0.08);
 }
 
 /* Core Settings */
@@ -470,8 +478,8 @@ body {
 .hero-section {
     padding: 60px 40px;
     border-radius: 24px;
-    background: linear-gradient(135deg, rgba(17, 17, 19, 0.9) 0%, rgba(9, 9, 11, 0.95) 100%),
-                radial-gradient(circle at 80% 20%, rgba(217, 4, 41, 0.08) 0%, transparent 60%);
+    background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%),
+                radial-gradient(circle at 80% 20%, var(--hero-glow) 0%, transparent 60%);
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
